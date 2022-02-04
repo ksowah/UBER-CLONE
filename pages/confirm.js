@@ -75,11 +75,11 @@ const confirm = ({response, destination}) => {
 export const getServerSideProps = async () => {
    
     const request = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${test}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/accra.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
         )
 
     const endPoint = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${test}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/cape.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
         )
     const response = await request.json()
     const destination = await endPoint.json()
