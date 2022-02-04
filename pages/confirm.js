@@ -53,4 +53,9 @@ const confirm = () => {
   );
 };
 
+
+const getServersideProps = async (context) => {
+    
+}
+
 export default confirm;
