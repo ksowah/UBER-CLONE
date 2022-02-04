@@ -13,7 +13,7 @@ const Vehicles = () => {
 
                 <div className="flex flex-col">
                     <h4 className="font-bold">Uber X</h4>
-                    <p className="text-blue-400">5 mins away</p>
+                    <p className="text-blue-300">5 mins away</p>
                 </div>
         </div>
 
