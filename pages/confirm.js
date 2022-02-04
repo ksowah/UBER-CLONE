@@ -30,7 +30,7 @@ const confirm = ({response, destination}) => {
             </Layer>
 
             <Marker
-                coordinates={[-0.2416815, 51.5285582]}
+                coordinates={[-0.2416815, 51.5285582], [-0.481747846041145, 51.3233379650232]}
                 anchor="bottom">
                 <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
                 className='h-8 animate-bounce'
