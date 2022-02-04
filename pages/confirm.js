@@ -1,6 +1,6 @@
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import Vehicles from '../components/Vehicles';
-import useRouter from 'next/router'
+import {useRouter} from 'next/router'
 
 const Map = ReactMapboxGl({
     accessToken:
