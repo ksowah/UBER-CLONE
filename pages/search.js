@@ -64,9 +64,19 @@ const search = () => {
       </div>
 
         <div className='px-4 w-full'>
-            <button className='w-full m-4 p-2 bg-black text-white text-2xl active:bg-gray-900'>
-            Confirm Location
-            </button>
+            <Link href={
+                {
+                    pathname: 'confirm',
+                    query: {
+                        pickup: 'cape coast',
+                        dropoff: 'accra'
+                    }
+                }
+            }>
+                <button className='w-full m-4 p-2 bg-black text-white text-2xl active:bg-gray-900'>
+                Confirm Location
+                </button>
+            </Link>
         </div>
 
       

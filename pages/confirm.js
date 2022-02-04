@@ -8,13 +8,13 @@ const Map = ReactMapboxGl({
 
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   
-  const address = 'ghana'
+  const address = 'cape-coast'
   const pickup = 'accra'
 
 const confirm = ({response, destination}) => {
 
-    const initial = response.features[0].center
-    const final = destination.features[0].center
+    const initial = response?.features[0]?.center
+    const final = destination?.features[0]?.center
 
   return (
   <div className="">
@@ -25,6 +25,7 @@ const confirm = ({response, destination}) => {
                 height: '60vh',
                 width: '100vw'
             }}
+            fitBounds={[initial, final]}
             >
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
                 <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
