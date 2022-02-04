@@ -9,10 +9,12 @@ const Map = ReactMapboxGl({
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   
   const address = 'ghana'
+  const pickup = 'togo'
 
-const confirm = ({response}) => {
+const confirm = ({response, destination}) => {
 
-    console.log(response);
+    console.log(response.features[0].center);
+    console.log(destination.features[0].center);
   return (
   <div className="">
         <div className='flex flex-col'> 
@@ -62,12 +64,19 @@ const confirm = ({response}) => {
 export const getServerSideProps = async () => {
    
     const request = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        )
+
+    const endPoint = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        )
     const response = await request.json()
+    const destination = await endPoint.json()
     
     return {
         props:{
-            response: response
+            response: response,
+            destination : destination
         }
     }
 }
