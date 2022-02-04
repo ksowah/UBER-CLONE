@@ -1,5 +1,6 @@
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import Vehicles from '../components/Vehicles';
+import useRouter from 'next/router'
 
 const Map = ReactMapboxGl({
     accessToken:
@@ -8,13 +9,14 @@ const Map = ReactMapboxGl({
 
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   
-  const address = 'cape-coast'
-  const pickup = 'accra'
-
+  const test = ''
 const confirm = ({response, destination}) => {
 
     const initial = response?.features[0]?.center
     const final = destination?.features[0]?.center
+
+  const router = useRouter()
+  const {pickup, dropoff} = router.query
 
   return (
   <div className="">
@@ -73,11 +75,11 @@ const confirm = ({response, destination}) => {
 export const getServerSideProps = async () => {
    
     const request = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${test}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
         )
 
     const endPoint = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${test}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
         )
     const response = await request.json()
     const destination = await endPoint.json()
