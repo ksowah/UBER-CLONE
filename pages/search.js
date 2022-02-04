@@ -8,7 +8,7 @@ const search = () => {
   return (
   <div className='bg-gray-200 h-screen'>
       <Head>
-          <title>Search Your destination</title>
+          <title>Search destination</title>
       </Head>
 
     <Link href={'/'}>
