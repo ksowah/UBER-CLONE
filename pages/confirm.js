@@ -46,7 +46,7 @@ const confirm = () => {
             </div>
          </div>
 
-         <button className='w-full bg-black p-2 text-xl m-4 text-white scroll'>
+         <button className='w-full bg-black active:bg-gray-900 p-2 text-xl m-4 text-white scroll'>
              Confirm UberX
          </button>
   </div>
