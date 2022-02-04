@@ -59,10 +59,10 @@ const confirm = ({response}) => {
 };
 
 
-const getServersideProps = async (context) => {
+export const getServersideProps = async (context) => {
    
     const request = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/accra%20${address}.json?types=place%2Cpostcode%2Caddress&access_token=${accessToken}`)
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/accra%20ghana.json?types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
     const response = await request.json()
     
     return {
