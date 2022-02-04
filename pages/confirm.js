@@ -5,9 +5,14 @@ const Map = ReactMapboxGl({
     accessToken:
       'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   });
-  
 
-const confirm = () => {
+  const accessToken = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
+  
+  const address = 'ghana'
+
+const confirm = ({results}) => {
+
+    console.log(results);
   return (
   <div className="">
         <div className='flex flex-col'> 
@@ -55,7 +60,15 @@ const confirm = () => {
 
 
 const getServersideProps = async (context) => {
+    const location = context.query.location
+    const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/accra%20${address}.json?types=place%2Cpostcode%2Caddress&access_token=${accessToken}`)
+    const response = await request.json()
     
+    return {
+        props:{
+            results: results
+        }
+    }
 }
 
 export default confirm;
