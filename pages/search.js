@@ -10,7 +10,7 @@ const search = () => {
     const [pickup, setPickup] = useState('')
     const [dropoff, setDropoff] = useState('')
 
-    console.log(pickup);
+    console.log(dropoff);
 
   return (
   <div className='bg-gray-200 h-screen'>
@@ -85,8 +85,8 @@ const search = () => {
                 {
                     pathname: 'confirm',
                     query: {
-                        pickup: 'cape coast',
-                        dropoff: 'accra'
+                        pickup: pickup,
+                        dropoff: dropoff
                     }
                 }
             }>
