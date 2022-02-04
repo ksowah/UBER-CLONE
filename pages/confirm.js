@@ -9,7 +9,7 @@ const Map = ReactMapboxGl({
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   
   const address = 'ghana'
-  const pickup = 'togo'
+  const pickup = 'accra'
 
 const confirm = ({response, destination}) => {
 
