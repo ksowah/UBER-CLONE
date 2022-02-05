@@ -25,21 +25,24 @@ const confirm = ({response, destination}) => {
     const [finalDestination, setFinalDestination] = useState(undefined)
 
     useEffect(() => {
-        if(pickup){
-            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
-            .then((res) => {
-                res.json()
-            })
-            .then((data) => {
-                console.log(data);
-            })
+       const getData = async ()=>{
+        if(initialDestination && pickup){
+          const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+          const res = await request.json() 
+          setInitialDestination(res?.features[0]?.center)
+          console.log(initialDestination);
         }
 
-        if(dropoff){
-            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        if(finalDestination && dropoff){
+            const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+          const res = await request.json() 
+          setFinalDestination(res?.features[0]?.center)
         }
+       }
+
+       getData()
        
-    }, [])
+    }, [initialDestination, finalDestination])
 
   return (
   <div className="">
@@ -50,21 +53,21 @@ const confirm = ({response, destination}) => {
                 height: '60vh',
                 width: '100vw'
             }}
-            fitBounds={[initial, final]}
+            fitBounds={[initialDestination, finalDestination]}
             >
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
                 <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
             </Layer>
 
             <Marker
-                coordinates={initial}
+                coordinates={initialDestination}
                 anchor="bottom">
                 <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
                 className='h-8 animate-bounce'
                 />
             </Marker>
             <Marker
-                coordinates={final}
+                coordinates={finalDestination}
                 anchor="bottom">
                 <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
                 className='h-8 animate-bounce'
