@@ -24,25 +24,24 @@ const confirm = ({response, destination}) => {
     const [initialDestination, setInitialDestination] = useState(undefined)
     const [finalDestination, setFinalDestination] = useState(undefined)
 
-    useEffect(() => {
-       const getData = async ()=>{
-        if(initialDestination && pickup){
-          const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
-          const res = await request.json() 
-          setInitialDestination(res?.features[0]?.center)
-          console.log(initialDestination);
-        }
+    const getPickUp = async () => {
+        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        const res = await request.json() 
+        setInitialDestination(res?.features[0]?.center)
+        console.log(initialDestination);
+    }
 
-        if(finalDestination && dropoff){
-            const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
-          const res = await request.json() 
-          setFinalDestination(res?.features[0]?.center)
-        }
-       }
-
-       getData()
+    const getDropoff = async ()=> {
+        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        const res = await request.json() 
+        setFinalDestination(res?.features[0]?.center)
+    }
        
-    }, [initialDestination, finalDestination])
+
+    useEffect(() => {
+       getPickUp()
+       getDropoff()
+    }, [pickup, dropoff])
 
   return (
   <div className="">
