@@ -21,16 +21,12 @@ const confirm = () => {
     const [initialDestination, setInitialDestination] = useState([-2, 5])
     const [finalDestination, setFinalDestination] = useState([-4, 6])
 
-    // const initialDestination = []
-    // const finalDestination = []
 
     const getPickUp = (pickup) => {
          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
          .then ((res) => res.json()) 
          .then ((data) => {
 
-          // initialDestination = data.features[0].center
-          // console.log(initialDestination);
             setInitialDestination(data.features[0].center)
             console.log(initialDestination);
          })
