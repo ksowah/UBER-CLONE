@@ -13,8 +13,8 @@ const Map = ReactMapboxGl({
   const test = ''
 const confirm = ({response, destination}) => {
 
-    const [initial, setInitial] = useState('');
-    const [final, setFinal] = useState('');
+    const [initial, setInitial] = useState([-0.481747846041145, 51.3233379650232]);
+    const [final, setFinal] = useState([-0.481747846041145, 51.3233379650232]);
 
    
 
@@ -40,6 +40,7 @@ const confirm = ({response, destination}) => {
         getResponse()
     }, [initial, final])
    
+console.log(initial);
 
   const router = useRouter()
   const {pickup, dropoff} = router.query
