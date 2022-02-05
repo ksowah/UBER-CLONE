@@ -11,21 +11,24 @@ const Map = ReactMapboxGl({
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   
   const test = ''
-const confirm = ({response, destination}) => {
+const confirm = () => {
 
   const router = useRouter()
   const {pickup, dropoff} = router.query
 
   // ------------- client request -------------
 
-    const [initialDestination, setInitialDestination] = useState(null)
+    const [initialDestination, setInitialDestination] = useState()
     const [finalDestination, setFinalDestination] = useState()
 
-    const getPickUp = async (pickup) => {
-        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
-        const res = await request.json() 
-        setInitialDestination(res.features[0].center)
-        console.log(initialDestination);
+    const getPickUp = (pickup) => {
+         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+         .then ((res) => res.json()) 
+         .then ((data) => {
+            setInitialDestination(data.features[0].center)
+            console.log(initialDestination);
+         })
+        
     }
 
     const getDropoff = async (dropoff)=> {
@@ -93,25 +96,5 @@ const confirm = ({response, destination}) => {
   );
 };
 
-
-export const getServerSideProps = async () => {
-   
-    const request = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/accra.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
-        )
-
-    const endPoint = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/cape.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
-        )
-    const response = await request.json()
-    const destination = await endPoint.json()
-    
-    return {
-        props:{
-            response: response,
-            destination : destination
-        }
-    }
-}
 
 export default confirm;
