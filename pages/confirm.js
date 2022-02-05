@@ -21,12 +21,18 @@ const confirm = () => {
     const [initialDestination, setInitialDestination] = useState([])
     const [finalDestination, setFinalDestination] = useState()
 
+    // const initialDestination = []
+    // const finalDestination = []
+
     const getPickUp = (pickup) => {
          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
          .then ((res) => res.json()) 
          .then ((data) => {
-            // setInitialDestination(data.features[0].center)
-            // console.log(initialDestination);
+
+          // initialDestination = data.features[0].center
+          // console.log(initialDestination);
+            setInitialDestination(data.features[0].center)
+            console.log(initialDestination);
          })
         
     }
@@ -34,8 +40,10 @@ const confirm = () => {
     const getDropoff = async (dropoff)=> {
         const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
-        // setFinalDestination(res?.features[0]?.center)
+        // finalDestination = res.features[0].center
         // console.log(finalDestination);
+        setFinalDestination(res?.features[0]?.center)
+        console.log(finalDestination);
     }
        
 
@@ -59,13 +67,13 @@ const confirm = () => {
                     height: '60vh',
                     width: '100vw'
                 }}
-                // fitBounds={[initialDestination, finalDestination]}
+                 fitBounds={[initialDestination, finalDestination]}
                 >
                 <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
                     <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
                 </Layer>
     
-                {/* <Marker
+                <Marker
                     coordinates={initialDestination}
                     anchor="bottom">
                     <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
@@ -78,7 +86,7 @@ const confirm = () => {
                     <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
                     className='h-8 animate-bounce'
                     />
-                </Marker> */}
+                </Marker>
                 </Map>
     
              </div>
