@@ -18,8 +18,8 @@ const confirm = () => {
 
   // ------------- client request -------------
 
-    const [initialDestination, setInitialDestination] = useState([])
-    const [finalDestination, setFinalDestination] = useState()
+    const [initialDestination, setInitialDestination] = useState([-2, 5])
+    const [finalDestination, setFinalDestination] = useState([-4, 6])
 
     // const initialDestination = []
     // const finalDestination = []
