@@ -28,10 +28,21 @@ const confirm = ({response, destination}) => {
         if(pickup){
             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
             .then((res) => res.json())
+            .then( (data) => {
+                setInitialDestination(data)
+                console.log(initialDestination);
+            })
+            
         }
 
         if(dropoff){
             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+            .then((res) => res.json())
+            .then( (data) => {
+                setFinalDestination(data)
+                console.log(finalDestination);
+            })
+
         }
        
     }, [])
