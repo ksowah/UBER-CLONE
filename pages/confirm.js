@@ -1,6 +1,7 @@
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import Vehicles from '../components/Vehicles';
 import {useRouter} from 'next/router'
+import { useEffect } from 'react';
 
 const Map = ReactMapboxGl({
     accessToken:
@@ -10,13 +11,33 @@ const Map = ReactMapboxGl({
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
   
   const test = ''
-const confirm = ({response, destination}) => {
-
-    const initial = response?.features[0]?.center
-    const final = destination?.features[0]?.center
+const confirm = () => {
 
   const router = useRouter()
   const {pickup, dropoff} = router.query
+
+  const fetchRequest = async ()=>{
+    
+  const request = await fetch(
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/accra.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+    )
+
+    const endPoint = await fetch(
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/cape.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+        )
+    const response = await request.json()
+    const destination = await endPoint.json()
+
+  }
+
+  useEffect(()=>{
+    fetchRequest()
+  }, [])
+
+  
+
+  const initial = response?.features[0]?.center
+  const final = destination?.features[0]?.center
 
   return (
   <div className="">
