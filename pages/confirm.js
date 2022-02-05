@@ -1,7 +1,6 @@
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import Vehicles from '../components/Vehicles';
 import {useRouter} from 'next/router'
-import { useEffect, useState } from 'react';
 
 const Map = ReactMapboxGl({
     accessToken:
@@ -13,34 +12,8 @@ const Map = ReactMapboxGl({
   const test = ''
 const confirm = ({response, destination}) => {
 
-    const [initial, setInitial] = useState([-0.481747846041145, 51.3233379650232]);
-    const [final, setFinal] = useState([-0.481747846041145, 51.3233379650232]);
-
-   
-
-    useEffect(()=>{
-        const getResponse = async () => {
-            const request = await fetch(
-                `https://api.mapbox.com/geocoding/v5/mapbox.places/accra.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
-                )
-        
-            const endPoint = await fetch(
-                `https://api.mapbox.com/geocoding/v5/mapbox.places/cape.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
-                )
-            const response = await request.json()
-            const destination = await endPoint.json()
-    
-            const initialDestination = response?.features[0]?.center
-            const finalDestination = destination?.features[0]?.center
-        
-            setInitial(initialDestination)
-            setFinal(finalDestination)
-    
-        }
-        getResponse()
-    }, [initial, final])
-   
-console.log(initial);
+    const initial = response?.features[0]?.center
+    const final = destination?.features[0]?.center
 
   const router = useRouter()
   const {pickup, dropoff} = router.query
