@@ -13,21 +13,18 @@ const Map = ReactMapboxGl({
   const test = ''
 const confirm = ({response, destination}) => {
 
-    const initial = response?.features[0]?.center
-    const final = destination?.features[0]?.center
-
   const router = useRouter()
   const {pickup, dropoff} = router.query
 
   // ------------- client request -------------
 
-    const [initialDestination, setInitialDestination] = useState(undefined)
-    const [finalDestination, setFinalDestination] = useState(undefined)
+    const [initialDestination, setInitialDestination] = useState(null)
+    const [finalDestination, setFinalDestination] = useState()
 
     const getPickUp = async (pickup) => {
         const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
-        setInitialDestination(res?.features[0]?.center)
+        setInitialDestination(res.features[0].center)
         console.log(initialDestination);
     }
 
@@ -52,13 +49,13 @@ const confirm = ({response, destination}) => {
                 height: '60vh',
                 width: '100vw'
             }}
-            fitBounds={[initialDestination, finalDestination]}
+            // fitBounds={[initialDestination, finalDestination]}
             >
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
                 <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
             </Layer>
 
-            <Marker
+            {/* <Marker
                 coordinates={initialDestination}
                 anchor="bottom">
                 <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
@@ -71,7 +68,7 @@ const confirm = ({response, destination}) => {
                 <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
                 className='h-8 animate-bounce'
                 />
-            </Marker>
+            </Marker> */}
             </Map>
 
          </div>
