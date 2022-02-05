@@ -1,6 +1,7 @@
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import Vehicles from '../components/Vehicles';
 import {useRouter} from 'next/router'
+import { useEffect, useState } from 'react';
 
 const Map = ReactMapboxGl({
     accessToken:
@@ -17,6 +18,23 @@ const confirm = ({response, destination}) => {
 
   const router = useRouter()
   const {pickup, dropoff} = router.query
+
+  // ------------- client request -------------
+
+    const [initialDestination, setInitialDestination] = useState(undefined)
+    const [finalDestination, setFinalDestination] = useState(undefined)
+
+    useEffect(() => {
+        if(pickup){
+            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+            .then((res) => res.json())
+        }
+
+        if(dropoff){
+            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        }
+       
+    }, [])
 
   return (
   <div className="">
