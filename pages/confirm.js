@@ -26,7 +26,7 @@ const confirm = () => {
          .then ((res) => res.json()) 
          .then ((data) => {
             setInitialDestination(data.features[0].center)
-            console.log(initialDestination);
+            console.log(data.features[0].center);
          })
         
     }
