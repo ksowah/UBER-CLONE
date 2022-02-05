@@ -24,14 +24,14 @@ const confirm = ({response, destination}) => {
     const [initialDestination, setInitialDestination] = useState(undefined)
     const [finalDestination, setFinalDestination] = useState(undefined)
 
-    const getPickUp = async () => {
+    const getPickUp = async (pickup) => {
         const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
         setInitialDestination(res?.features[0]?.center)
         console.log(initialDestination);
     }
 
-    const getDropoff = async ()=> {
+    const getDropoff = async (dropoff)=> {
         const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
         setFinalDestination(res?.features[0]?.center)
@@ -39,8 +39,8 @@ const confirm = ({response, destination}) => {
        
 
     useEffect(() => {
-       getPickUp()
-       getDropoff()
+       getPickUp(pickup)
+       getDropoff(dropoff)
     }, [pickup, dropoff])
 
   return (
