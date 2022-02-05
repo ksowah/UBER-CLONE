@@ -60,7 +60,7 @@ const confirm = () => {
                 <Map
                 style="mapbox://styles/mapbox/streets-v9"
                 containerStyle={{
-                    height: '60vh',
+                    height: '50vh',
                     width: '100vw'
                 }}
                  fitBounds={[initialDestination, finalDestination]}
@@ -92,10 +92,7 @@ const confirm = () => {
                     choose a ride or swipe up for more
                 </div> 
     
-                <div className='flex flex-col border-t-2 border-b-2 h-80 overflow-auto scrollbar-hide'>
-                    <Vehicles/>
-                    <Vehicles/>
-                    <Vehicles/>
+                <div className='border-t-2 border-b-2 h-60 overflow-auto scrollbar-hide'>
                     <Vehicles/>
                 </div>
              </div>

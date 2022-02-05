@@ -1,26 +1,36 @@
 import Image from "next/image";
+import { carList } from "../data/carList";
 
 const Vehicles = () => {
   return (
-      <div className="flex items-center justify-between hover:bg-gray-200 cursor-pointer w-full group">
-        <div className="flex items-center">
-                <Image
-                    src={'https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_v1.png'}
-                    height={120}
-                    width={130}
-                    className="group-hover:animate-pulse"
-                />
+        <>
+            
+            {
+                carList.map((car, index)=>(
+            <div className="flex items-center justify-between hover:bg-gray-200 cursor-pointer w-full group px-4">
+                <div className="flex items-center" key={index}>
+                        <Image
+                        src={car.imgUrl}
+                        height={120}
+                        width={130}
+                        className="group-hover:animate-pulse"
+                        />
 
-                <div className="flex flex-col">
-                    <h4 className="font-bold">Uber X</h4>
-                    <p className="text-blue-400">5 mins away</p>
+                    <div className="flex flex-col ml-4">
+                        <h4 className="font-bold">{car.service}</h4>
+                        <p className="text-blue-500 text-sm">5 mins away</p>
+                    </div>
                 </div>
-        </div>
 
-            <div className="px-5">
+                <div className="px-5">
                 <p className="font-bold">$0.00</p>
             </div>
         </div>
+
+                ))
+            }
+      </>
+           
   );
 };
 
