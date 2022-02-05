@@ -16,27 +16,27 @@ const confirm = ({response, destination}) => {
     const [initial, setInitial] = useState('');
     const [final, setFinal] = useState('');
 
-    const getResponse = async () => {
-        const request = await fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/accra.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
-            )
-    
-        const endPoint = await fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/cape.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
-            )
-        const response = await request.json()
-        const destination = await endPoint.json()
-
-        const initialDestination = response?.features[0]?.center
-        const finalDestination = destination?.features[0]?.center
-    
-        setInitial(initialDestination)
-        setFinal(finalDestination)
-
-
-    }
+   
 
     useEffect(()=>{
+        const getResponse = async () => {
+            const request = await fetch(
+                `https://api.mapbox.com/geocoding/v5/mapbox.places/accra.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+                )
+        
+            const endPoint = await fetch(
+                `https://api.mapbox.com/geocoding/v5/mapbox.places/cape.json?types=place%2Cpostcode%2Caddress&access_token=${token}`
+                )
+            const response = await request.json()
+            const destination = await endPoint.json()
+    
+            const initialDestination = response?.features[0]?.center
+            const finalDestination = destination?.features[0]?.center
+        
+            setInitial(initialDestination)
+            setFinal(finalDestination)
+    
+        }
         getResponse()
     }, [initial, final])
    
