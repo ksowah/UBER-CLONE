@@ -18,7 +18,7 @@ const confirm = () => {
 
   // ------------- client request -------------
 
-    const [initialDestination, setInitialDestination] = useState()
+    const [initialDestination, setInitialDestination] = useState([])
     const [finalDestination, setFinalDestination] = useState()
 
     const getPickUp = (pickup) => {
@@ -26,7 +26,7 @@ const confirm = () => {
          .then ((res) => res.json()) 
          .then ((data) => {
             setInitialDestination(data.features[0].center)
-            console.log(data.features[0].center);
+            console.log(initialDestination);
          })
         
     }
@@ -35,6 +35,7 @@ const confirm = () => {
         const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
         setFinalDestination(res?.features[0]?.center)
+        console.log(finalDestination);
     }
        
 
