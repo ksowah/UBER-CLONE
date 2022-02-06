@@ -106,7 +106,7 @@ export default function Home() {
             </Link>
 
       </div>
-      <Link>
+      <Link href={'/search'}>
         <div className='h-20 bg-gray-200 text-2xl p-4 mt-8 flex items-center'>
           <p>Where to?</p>
         </div>
