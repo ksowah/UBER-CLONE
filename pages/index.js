@@ -90,7 +90,7 @@ export default function Home() {
 
             </Link>
              
-             <Link>
+             <Link href={'/search'}>
                 <div className='bg-gray-200 flex-1 m-2 flex flex-col text-xl cursor-pointer
                                   rounded-lg justify-center text-center pb-4 
                                   font-bold transform hover:scale-105 transition'>
