@@ -74,18 +74,21 @@ export default function Home() {
             </div>
          </Link>
             
-            <div className='bg-gray-200 flex-1 m-2 flex flex-col text-xl
-                              rounded-lg justify-center text-center pb-4 cursor-pointer 
-                              font-bold transform hover:scale-105 transition'>
-            <Image
-                src={'https://i.ibb.co/n776JLm/bike.png'}
-                className='h-3/5'
-                height={50}
-                width={70}
-                layout='responsive'
-              />
-              Wheel
-            </div>
+         <Link href={'/search'}>   
+              <div className='bg-gray-200 flex-1 m-2 flex flex-col text-xl
+                                rounded-lg justify-center text-center pb-4 cursor-pointer 
+                                font-bold transform hover:scale-105 transition'>
+              <Image
+                  src={'https://i.ibb.co/n776JLm/bike.png'}
+                  className='h-3/5'
+                  height={50}
+                  width={70}
+                  layout='responsive'
+                />
+                Wheel
+              </div>
+
+            </Link>
              
             <div className='bg-gray-200 flex-1 m-2 flex flex-col text-xl cursor-pointer
                               rounded-lg justify-center text-center pb-4 
