@@ -18,6 +18,8 @@ export default function Home() {
   const auth = getAuth(app)
   const router = useRouter()
   const [user, setUser] = useState(null);
+  const [long, setLong] = useState('');
+  const [lat, setLat] = useState('');
 
   useEffect(()=>{
     return onAuthStateChanged(auth, user => {
@@ -33,6 +35,24 @@ export default function Home() {
     })
 
   }, [])
+
+
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+     alert('OOOOPS!! looks like we can\'t get your location ')
+    }
+  }
+
+  function showPosition(position) {
+   setLat(position.coords.latitude)
+   setLong( position.coords.longitude)
+   console.log('>>>>' + lat);
+   console.log('>>>>' + long);
+  }
+
   
   return (
     <div className='flex flex-col'>
