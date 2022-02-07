@@ -18,7 +18,10 @@ const Vehicles = ({pickup, dropOff}) => {
     const getTimeTaken = ()=>{
         if(duration < 3600 ){
             setTimeTaken(duration / 60)
+        }else if(duration >= 3600){
+            setTimeTaken(duration / 60)
         }
+        return timeTaken
     }
 
   return (
@@ -36,7 +39,7 @@ const Vehicles = ({pickup, dropOff}) => {
 
                     <div className="flex flex-col ml-4">
                         <h4 className="font-bold">{car.service}</h4>
-                        <p className="text-blue-500 text-sm">{timeTaken} mins away</p>
+                        <p className="text-blue-500 text-sm">{(duration/60).toFixed()} mins away</p>
                     </div>
                 </div>
 
