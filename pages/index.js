@@ -40,20 +40,22 @@ export default function Home() {
 
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.watchPosition(showPosition);
     } else {
      alert('OOOOPS!! looks like we can\'t get your location ')
     }
+
   }
 
   useEffect(()=>{
     getLocation()
-  }, [lat, long])
+  }, [])
+
 
   function showPosition(position) {
-    if(position.coords.latitude){
+    if(position.coords.latitude && position.coords.longitude){
       setLat(position.coords.latitude)
-      setLong( position.coords.longitude)
+      setLong(position.coords.longitude)
       console.log(lat);
       console.log(long);
     }
