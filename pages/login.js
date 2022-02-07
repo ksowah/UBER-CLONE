@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { app } from "../firebase";
+import app from "../firebase";
 
 
 
