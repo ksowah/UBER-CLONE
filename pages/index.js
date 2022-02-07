@@ -69,11 +69,9 @@ export default function Home() {
             </div>
             <div className='flex items-center'>
                 <div className='mr-4 text-sm font-bold'>{user && user.name}</div>
-                <Image
+                <img
                   src={user && user.image}
-                  height={50}
-                  width={50}
-                  className='rounded-full border-gray-200 p-px'
+                  className='rounded-full border-gray-200 p-px h-12 cursor-pointer'
                   onClick={()=>signOut(auth)}
                 />
                 {/* image */}
