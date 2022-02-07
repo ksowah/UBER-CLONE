@@ -1,14 +1,16 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { carList } from "../data/carList";
 
 const Vehicles = ({pickup, dropOff}) => {
-console.log('>>>>>>>>>>>>>'+pickup);
+
+    const [duration, setDuration] = useState(0);
+
     useEffect(()=>{
         fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${pickup[0]}%2C${pickup[1]}%3B${dropOff[0]}%2C${dropOff[1]}?access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
         .then((res)=> res.json())
-        .then((data) => data.routes[0].duration)
-    }, [])
+        .then((data) => setDuration(data.routes[0].duration))
+    }, [pickup, dropOff])
 
   return (
         <>
@@ -30,7 +32,7 @@ console.log('>>>>>>>>>>>>>'+pickup);
                 </div>
 
                 <div className="px-5">
-                <p className="font-bold">$0.00</p>
+                <p className="font-bold">{`₵${((duration / 100)*car.multiplier).toFixed(2)}`}</p>
             </div>
         </div>
 
