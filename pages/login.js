@@ -18,6 +18,27 @@ const login = () => {
             console.log(user);
         }
     })
+
+    const signIn =()=>{
+           
+            signInWithPopup(auth, provider)
+            .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            console.log(user);
+            console.log(token);
+            // ...
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            alert(errorCode)
+            // ...
+    });
+
+}
     
   return( 
     <>
@@ -47,7 +68,7 @@ const login = () => {
                 </div>
             </div>
            
-        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={()=>signInWithPopup(auth, provider)}>
+        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={signIn()}>
             Sign In With Google
         </button>
     </div>
