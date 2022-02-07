@@ -4,9 +4,11 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../firebase";
 
 
+
 const login = () => {
 
     const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
     const signIn =()=>{
            
