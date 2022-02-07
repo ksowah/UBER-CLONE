@@ -5,12 +5,21 @@ import { carList } from "../data/carList";
 const Vehicles = ({pickup, dropOff}) => {
 
     const [duration, setDuration] = useState(0);
+    const [timeTaken, setTimeTaken] = useState(0)
 
     useEffect(()=>{
         fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${pickup[0]}%2C${pickup[1]}%3B${dropOff[0]}%2C${dropOff[1]}?access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
         .then((res)=> res.json())
         .then((data) => setDuration(data.routes[0].duration))
+
+        getTimeTaken()
     }, [pickup, dropOff])
+
+    const getTimeTaken = ()=>{
+        if(duration < 3600 ){
+            setTimeTaken(duration / 60)
+        }
+    }
 
   return (
         <>
@@ -27,7 +36,7 @@ const Vehicles = ({pickup, dropOff}) => {
 
                     <div className="flex flex-col ml-4">
                         <h4 className="font-bold">{car.service}</h4>
-                        <p className="text-blue-500 text-sm">5 mins away</p>
+                        <p className="text-blue-500 text-sm">{timeTaken} mins away</p>
                     </div>
                 </div>
 

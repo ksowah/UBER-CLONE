@@ -24,7 +24,7 @@ const confirm = () => {
 
     const getPickUp = (pickup) => {
          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
-         .then ((res) => res.json()) 
+         .then ((res) => res?.json()) 
          .then ((data) => {
 
             setInitialDestination(data.features[0].center)
