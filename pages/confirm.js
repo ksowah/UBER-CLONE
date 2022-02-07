@@ -56,9 +56,9 @@ const confirm = () => {
         </Head>
 
         <Link href={'/search'}>
-          <div className='rounded-full h-fit p-2 absolute z-10 bg-white m-4 cursor-pointer'>
+          <div className='rounded-full h-fit p-1 absolute z-10 bg-white m-4 cursor-pointer shadow-md'>
             <ArrowLeftIcon
-              className='h-10 w-17'
+              className='h-10 w-15'
             />
           </div>
         </Link>

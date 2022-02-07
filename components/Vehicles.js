@@ -27,7 +27,7 @@ const Vehicles = ({pickup, dropOff}) => {
 
                     <div className="flex flex-col ml-4">
                         <h4 className="font-bold">{car.service}</h4>
-                        <p className="text-blue-500 text-sm">{duration/60} mins away</p>
+                        <p className="text-blue-500 text-sm">{(duration/60).toFixed()} mins away</p>
                     </div>
                 </div>
 
