@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import Link from 'next/link'
-import { onAuthStateChanged, signOut, auth } from 'firebase/auth';
+import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -13,6 +13,7 @@ const Map = ReactMapboxGl({
 
 export default function Home() {
 
+  const auth = getAuth()
   const router = useRouter()
   const [user, setUser] = useState(null);
 
