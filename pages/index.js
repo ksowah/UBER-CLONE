@@ -2,6 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import Link from 'next/link'
+import { onAuthStateChanged, signOut, auth } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -10,6 +13,23 @@ const Map = ReactMapboxGl({
 
 export default function Home() {
 
+  const router = useRouter()
+  const [user, setUser] = useState(null);
+
+  useEffect(()=>{
+    return onAuthStateChanged(auth, user => {
+      if(user){
+        setUser({
+          name: user.displayName,
+          image: user.photoURL
+        })
+      }else{
+        setUser(null)
+      }
+    })
+
+  }, [])
+  
   return (
     <div className='flex flex-col'>
       <Head>
