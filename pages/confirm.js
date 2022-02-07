@@ -3,6 +3,7 @@ import Vehicles from '../components/Vehicles';
 import Head from 'next/head'
 import {useRouter} from 'next/router'
 import { useEffect, useState } from 'react';
+import { ArrowLeftIcon } from '@heroicons/react/outline'
 
 const Map = ReactMapboxGl({
     accessToken:
@@ -52,6 +53,10 @@ const confirm = () => {
          <Head>
             <title>Confirm Ride</title>
         </Head>
+
+        <div>
+
+        </div>
     
       <div className="">
             <div className='flex flex-col'> 
