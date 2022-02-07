@@ -70,7 +70,7 @@ export default function Home() {
             <div className='flex items-center'>
                 <div className='mr-4 text-sm font-bold'>{user && user.name}</div>
                 <Image
-                  src={'https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_v1.png'}
+                  src={user && user.image}
                   height={50}
                   width={50}
                   className='rounded-full border-gray-200 p-px'
