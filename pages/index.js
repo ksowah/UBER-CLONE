@@ -18,7 +18,7 @@ export default function Home() {
   const auth = getAuth(app)
   const router = useRouter()
   const [user, setUser] = useState(null);
-  const [long, setLong] = useState(4);
+  const [long, setLong] = useState([4]);
   const [lat, setLat] = useState([-5]);
 
   useEffect(()=>{
