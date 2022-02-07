@@ -72,6 +72,7 @@ export default function Home() {
                   height={50}
                   width={50}
                   className='rounded-full border-gray-200 p-px'
+                  onClick={()=>signOut(auth)}
                 />
                 {/* image */}
             </div>
