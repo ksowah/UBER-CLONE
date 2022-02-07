@@ -18,8 +18,8 @@ const confirm = () => {
 
   // ------------- client request -------------
 
-    const [initialDestination, setInitialDestination] = useState([-2, 5])
-    const [finalDestination, setFinalDestination] = useState([-4, 6])
+    const [initialDestination, setInitialDestination] = useState([0,0])
+    const [finalDestination, setFinalDestination] = useState([0,0])
 
 
     const getPickUp = (pickup) => {
@@ -28,7 +28,6 @@ const confirm = () => {
          .then ((data) => {
 
             setInitialDestination(data.features[0].center)
-            console.log(initialDestination);
          })
         
     }
@@ -39,7 +38,6 @@ const confirm = () => {
         // finalDestination = res.features[0].center
         // console.log(finalDestination);
         setFinalDestination(res?.features[0]?.center)
-        console.log(finalDestination);
     }
        
 
@@ -94,7 +92,10 @@ const confirm = () => {
                 </div> 
     
                 <div className='border-t-2 border-b-2 h-60 overflow-auto scrollbar-hide'>
-                    <Vehicles/>
+                    <Vehicles
+                      pickup={initialDestination}
+                      dropOff={finalDestination}
+                    />
                 </div>
              </div>
     

@@ -1,14 +1,21 @@
 import Image from "next/image";
+import { useEffect } from "react";
 import { carList } from "../data/carList";
 
-const Vehicles = () => {
+const Vehicles = ({pickup, dropOff}) => {
+console.log('>>>>>>>>>>>>>'+pickup);
+    useEffect(()=>{
+        fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${pickup[0]}%2C${pickup[1]}%3B${dropOff[0]}%2C${dropOff[1]}?access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
+        .then((res)=> res.json())
+        .then((data) => console.log(data))
+    }, [])
+
   return (
         <>
-            
             {
                 carList.map((car, index)=>(
-            <div className="flex items-center justify-between hover:bg-gray-200 cursor-pointer w-full group px-4">
-                <div className="flex items-center" key={index}>
+            <div className="flex items-center justify-between hover:bg-gray-200 cursor-pointer w-full group px-4"  key={index}>
+                <div className="flex items-center">
                         <Image
                         src={car.imgUrl}
                         height={120}
