@@ -7,7 +7,7 @@ const Vehicles = ({pickup, dropOff}) => {
     const [duration, setDuration] = useState(0);
 
     useEffect(()=>{
-        fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${pickup[0]}%2C${pickup[1]}%3B${dropOff[0]}%2C${dropOff[1]}?access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
+        fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${pickup[0]}%2C${pickup[1]}%3B${dropOff[0]}%2C${dropOff[1]}?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
         .then((res)=> res.json())
         .then((data) => setDuration(data.routes[0].duration))
     }, [pickup, dropOff])
