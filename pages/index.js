@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import Link from 'next/link'
 import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
@@ -81,12 +81,12 @@ export default function Home() {
             </Layer>
 
             <Marker
-                    coordinates={}
+                    coordinates={[lat, long]}
                     anchor="bottom">
                     <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
                     className='h-8 animate-bounce'
                     />
-                </Marker>
+            </Marker>
 
           </Map>
       </div>
