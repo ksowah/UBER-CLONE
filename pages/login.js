@@ -15,6 +15,7 @@ const login = () => {
     onAuthStateChanged(auth, user => {
         if(user){
             route.push('/')
+            console.log(user);
         }
     })
     
