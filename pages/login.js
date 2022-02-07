@@ -6,7 +6,7 @@ const login = () => {
   return( 
     <>
         <Head>
-            <title>Login</title>
+            <title>Uber Login</title>
         </Head>
 
     <div className="h-screen bg-gray-200 p-4 w-auto">
