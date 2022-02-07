@@ -12,17 +12,7 @@ const Vehicles = ({pickup, dropOff}) => {
         .then((res)=> res.json())
         .then((data) => setDuration(data.routes[0].duration))
 
-        getTimeTaken()
     }, [pickup, dropOff])
-
-    const getTimeTaken = ()=>{
-        if(duration < 3600 ){
-            setTimeTaken(duration / 60)
-        }else if(duration >= 3600){
-            setTimeTaken(duration / 60)
-        }
-        return timeTaken
-    }
 
   return (
         <>
