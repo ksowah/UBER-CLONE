@@ -12,33 +12,16 @@ const login = () => {
     const provider = new GoogleAuthProvider();
     const route = useRouter()
 
-    onAuthStateChanged(auth, user => {
-        if(user){
-            route.push('/')
-            console.log(user);
-        }
-    })
+    useEffect(()=>{
+        onAuthStateChanged(auth, user => {
+            if(user){
+                route.push('/')
+                console.log(user);
+            }
+        })
+    
+    }, [])
 
-    const signIn =()=>{
-           
-            signInWithPopup(auth, provider)
-            .then((result) => {
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            const user = result.user;
-            console.log(user);
-            console.log(token);
-            // ...
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.email;
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            alert(errorCode)
-            // ...
-    });
-
-}
     
   return( 
     <>
