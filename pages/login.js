@@ -1,14 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import {app} from "../firebase";
-
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 
 const login = () => {
 
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+    const route = useRouter()
+
+    
 
     const signIn =()=>{
            
@@ -59,7 +63,7 @@ const login = () => {
                 </div>
             </div>
            
-        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={signIn()}>
+        <button className="w-full py-2 mt-4 bg-black text-white text-lg">
             Sign In With Google
         </button>
     </div>
