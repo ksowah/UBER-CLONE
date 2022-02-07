@@ -4,6 +4,7 @@ import Head from 'next/head'
 import {useRouter} from 'next/router'
 import { useEffect, useState } from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/outline'
+import Link from 'next/link';
 
 const Map = ReactMapboxGl({
     accessToken:
@@ -54,9 +55,13 @@ const confirm = () => {
             <title>Confirm Ride</title>
         </Head>
 
-        <div>
-          <ArrowLeftIcon/>
-        </div>
+        <Link href={'/search'}>
+          <div className='rounded-full h-fit p-2 absolute z-10 bg-white m-4 cursor-pointer'>
+            <ArrowLeftIcon
+              className='h-10 w-17'
+            />
+          </div>
+        </Link>
     
       <div className="">
             <div className='flex flex-col'> 
