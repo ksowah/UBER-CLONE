@@ -65,9 +65,9 @@ export default function Home() {
               />
             </div>
             <div className='flex items-center'>
-                <div className='mr-4 text-sm font-bold'>Kelvin Sowah</div>
+                <div className='mr-4 text-sm font-bold'>{user.name}</div>
                 <Image
-                  src={'https://avatars.githubusercontent.com/u/80095257?v=4'}
+                  src={user.image}
                   height={50}
                   width={50}
                   className='rounded-full border-gray-200 p-px'
