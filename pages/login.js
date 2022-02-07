@@ -1,8 +1,34 @@
 import Head from "next/head";
 import Image from "next/image";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "../firebase";
 
 
 const login = () => {
+
+    const auth = getAuth(app);
+
+    const signIn =()=>{
+           
+            signInWithPopup(auth, provider)
+            .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            console.log(user);
+            console.log(token);
+            // ...
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            alert(errorCode)
+            // ...
+    });
+
+}
+    
   return( 
     <>
         <Head>
