@@ -53,8 +53,8 @@ export default function Home() {
   function showPosition(position) {
    setLat(position.coords.latitude)
    setLong( position.coords.longitude)
-   console.log('>>>>' + lat);
-   console.log('>>>>' + long);
+   console.log(lat);
+   console.log(long);
   }
 
   
