@@ -75,6 +75,8 @@ export default function Home() {
               height: '60vh',
               width: '100vw'
             }}
+
+            fitBounds={[lat, long]}
           >
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
               <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
