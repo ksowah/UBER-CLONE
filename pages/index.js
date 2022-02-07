@@ -66,7 +66,7 @@ export default function Home() {
               />
             </div>
             <div className='flex items-center'>
-                <div className='mr-4 text-sm font-bold'>{user.name}</div>
+                <div className='mr-4 text-sm font-bold'>{user && user.name}</div>
                 <Image
                   src={user.image}
                   height={50}
