@@ -12,6 +12,7 @@ const Map = ReactMapboxGl({
     'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
 });
 
+
 export default function Home() {
 
   const auth = getAuth(app)
