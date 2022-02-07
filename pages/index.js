@@ -79,6 +79,15 @@ export default function Home() {
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
               <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
             </Layer>
+
+            <Marker
+                    coordinates={}
+                    anchor="bottom">
+                    <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
+                    className='h-8 animate-bounce'
+                    />
+                </Marker>
+
           </Map>
       </div>
 
