@@ -12,28 +12,11 @@ const login = () => {
     const provider = new GoogleAuthProvider();
     const route = useRouter()
 
-    
-
-    const signIn =()=>{
-           
-            signInWithPopup(auth, provider)
-            .then((result) => {
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            const user = result.user;
-            console.log(user);
-            console.log(token);
-            // ...
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.email;
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            alert(errorCode)
-            // ...
-    });
-
-}
+    onAuthStateChanged(auth, user => {
+        if(user){
+            route.push('/')
+        }
+    })
     
   return( 
     <>
@@ -63,7 +46,7 @@ const login = () => {
                 </div>
             </div>
            
-        <button className="w-full py-2 mt-4 bg-black text-white text-lg">
+        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={signInWithPopup()}>
             Sign In With Google
         </button>
     </div>
