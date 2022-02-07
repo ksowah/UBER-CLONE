@@ -18,8 +18,8 @@ export default function Home() {
   const auth = getAuth(app)
   const router = useRouter()
   const [user, setUser] = useState(null);
-  const [long, setLong] = useState(null);
-  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState([4]);
+  const [lat, setLat] = useState([-5]);
 
   useEffect(()=>{
     return onAuthStateChanged(auth, user => {
@@ -51,10 +51,12 @@ export default function Home() {
   }, [lat, long])
 
   function showPosition(position) {
-   setLat(position.coords.latitude)
-   setLong( position.coords.longitude)
-   console.log(lat);
-   console.log(long);
+    if(position.coords.latitude){
+      setLat(position.coords.latitude)
+      setLong( position.coords.longitude)
+      console.log(lat);
+      console.log(long);
+    }
   }
 
   
@@ -76,7 +78,7 @@ export default function Home() {
               width: '100vw'
             }}
 
-            fitBounds={[lat, long]}
+            // fitBounds={[lat, long]}
           >
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
               <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
