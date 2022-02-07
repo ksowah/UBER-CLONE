@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { app } from '../firebase';
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -13,7 +14,7 @@ const Map = ReactMapboxGl({
 
 export default function Home() {
 
-  const auth = getAuth()
+  const auth = getAuth(app)
   const router = useRouter()
   const [user, setUser] = useState(null);
 
