@@ -51,7 +51,7 @@ const login = () => {
                 </div>
             </div>
            
-        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={()=>signInWithPopup(auth, provider)}>
+        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={()=>signInWithPopup(auth, provider) .catch(error => alert(error.code))}>
             Sign In With Google
         </button>
     </div>
