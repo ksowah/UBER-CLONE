@@ -89,8 +89,8 @@ export default function Home() {
             <Marker
                     coordinates={[long, lat]}
                     anchor="bottom">
-                    <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/bc091baf586e6743d24e19c6445afd64d65af3f3/assets/mapbox-marker-icon-blue.svg?token=ATDCQGP7HSDJI7ARR5A2OCLCAIRKG'}
-                    className='h-8 animate-bounce'
+                    <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/20ee0fafcc3e605ae4060daeeb498ca964b636c6/assets/mapbox-marker-icon-blue.svg?token=ATDCQGPSLWCKNFCBOKLDYKDCAISWM'}
+                    className='h-10 animate-bounce'
                     />
             </Marker>
 
