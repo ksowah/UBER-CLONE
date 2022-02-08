@@ -80,14 +80,14 @@ export default function Home() {
               width: '100vw'
             }}
 
-              fitBounds={[[lat, long], [lat, long]]}
+              fitBounds={[[long, lat], [long, lat]]}
           >
             <Layer type="symbol" id="marker"  layout={{ 'icon-image': 'marker-15' }}>
               <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
             </Layer>
 
             <Marker
-                    coordinates={[lat, long]}
+                    coordinates={[long, lat]}
                     anchor="bottom">
                     <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/bc091baf586e6743d24e19c6445afd64d65af3f3/assets/mapbox-marker-icon-blue.svg?token=ATDCQGP7HSDJI7ARR5A2OCLCAIRKG'}
                     className='h-8 animate-bounce'
