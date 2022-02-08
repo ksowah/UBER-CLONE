@@ -81,14 +81,14 @@ const confirm = () => {
                 <Marker
                     coordinates={initialDestination}
                     anchor="bottom">
-                    <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
+                    <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/bc091baf586e6743d24e19c6445afd64d65af3f3/assets/mapbox-marker-icon-blue.svg?token=ATDCQGP7HSDJI7ARR5A2OCLCAIRKG'}
                     className='h-8 animate-bounce'
                     />
                 </Marker>
                 <Marker
                     coordinates={finalDestination}
                     anchor="bottom">
-                    <img src={'https://th.bing.com/th/id/R.6d7cede615c35d03034dbd85a1428382?rik=eOSNgMXl2ujVGw&pid=ImgRaw&r=0'}
+                    <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/bc091baf586e6743d24e19c6445afd64d65af3f3/assets/mapbox-marker-icon-blue.svg?token=ATDCQGP7HSDJI7ARR5A2OCLCAIRKG'}
                     className='h-8 animate-bounce'
                     />
                 </Marker>
