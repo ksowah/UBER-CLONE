@@ -56,8 +56,6 @@ export default function Home() {
     if(position.coords.latitude && position.coords.longitude){
       setLat(position.coords.latitude)
       setLong(position.coords.longitude)
-      console.log(lat);
-      console.log(long);
     }
   }
 
