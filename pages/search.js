@@ -56,13 +56,15 @@ const search = () => {
                 <div className='flex flex-col bg-white flex-1'>
                     <input type={'text'} 
                     placeholder='Enter pickup location' 
-                    className='h-10 bg-gray-200 flex flex-1 my-2 rounded-2 p-2 outline-none border-none'
+                    className='h-10 bg-gray-200 flex flex-1 my-2 p-2 border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-black'
                     value={pickup}
                     onChange={(e)=>setPickup(e.target.value)}
                     />
                     <input type={'text'} 
                     placeholder='Where to?' 
-                    className='bg-gray-200 h-10 flex flex-1 my-2 rounded-2 p-2 outline-none border-none'
+                    className='bg-gray-200 h-10 flex flex-1 my-2 p-2 border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-black'
                     value={dropoff}
                     onChange={(e)=>setDropoff(e.target.value)}
                     />
