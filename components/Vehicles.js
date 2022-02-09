@@ -9,7 +9,14 @@ const Vehicles = ({pickup, dropOff}) => {
     useEffect(()=>{
         fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${pickup[0]}%2C${pickup[1]}%3B${dropOff[0]}%2C${dropOff[1]}?access_token=pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw`)
         .then((res)=> res.json())
-        .then((data) => setDuration(data.routes[0].duration))
+        .then((data) => {
+            console.log(data);
+          if(data.routes.length === 0){
+              setDuration( 28703.252)
+          }else{
+            setDuration(data.routes[0].duration)
+          }
+        })
     }, [pickup, dropOff])
 
   return (
