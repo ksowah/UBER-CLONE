@@ -66,7 +66,7 @@ const confirm = () => {
         .then( res =>  res.json() )
         .then((data)=>{
           console.log(data);
-          data.features && setInitialDestination(data.features[0].center || [-4.663890138, 5.496609119])
+          data.features && setFinalDestination(data.features[0].center || [-4.663890138, 5.496609119])
         })
     }
        
