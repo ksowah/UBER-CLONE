@@ -61,10 +61,12 @@ const confirm = () => {
         
     }
 
-    const getDropoff = async (dropoff)=> {
-        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?proximity=${long},${lat}&types=place%2Cpostcode%2Caddress&access_token=${token}`)
-        const res = await request.json() 
-        res.features && setFinalDestination(res.features[0].center)
+    const getDropoff = (dropoff)=> {
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?proximity=${long},${lat}&types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        .then( res =>  res.json() )
+        .then((data)=>{
+          data.featudata && setFinalDestination(data.features[0].center)
+        })
     }
        
 
