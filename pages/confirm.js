@@ -14,7 +14,7 @@ const Map = ReactMapboxGl({
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
 
 
-const confirm = () => {
+const Confirm = () => {
 
   const router = useRouter()
   const {pickup, dropoff} = router.query
@@ -161,4 +161,4 @@ const confirm = () => {
 };
 
 
-export default confirm;
+export default Confirm;
