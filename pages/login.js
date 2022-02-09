@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import {app} from "../firebase";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -50,7 +50,7 @@ const login = () => {
                 </div>
             </div>
            
-        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={()=>signInWithPopup(auth, provider) .catch(error => alert(error.code))}>
+        <button className="w-full py-2 mt-4 bg-black text-white text-lg" onClick={()=>signInWithRedirect(auth, provider) .catch(error => alert(error.code))}>
             Sign In With Google
         </button>
     </div>
