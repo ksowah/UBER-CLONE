@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { useState } from 'react';
 
-const search = () => {
+const Search = () => {
 
     const accessToken = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
     const [pickup, setPickup] = useState('')
@@ -103,4 +103,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default Search;
