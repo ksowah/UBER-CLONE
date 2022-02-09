@@ -75,7 +75,7 @@ const confirm = () => {
         .then((data)=>{
           console.log(data);
           if(data.features){
-            if(data.features.length === 0){
+            if(data.features.length === 0 || data.message === 'Not Found'){
               alert('Please enter a valid location')
               setFinalDestination([-3.663890138, 5.496609119])
             }else{
