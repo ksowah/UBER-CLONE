@@ -81,14 +81,14 @@ const confirm = () => {
                 <Marker
                     coordinates={initialDestination}
                     anchor="bottom">
-                    <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/20ee0fafcc3e605ae4060daeeb498ca964b636c6/assets/mapbox-marker-icon-blue.svg?token=ATDCQGPSLWCKNFCBOKLDYKDCAISWM'}
+                    <img src={'https://www.pngplay.com/wp-content/uploads/9/Map-Marker-Transparent-PNG.png'}
                     className='h-10 animate-bounce'
                     />
                 </Marker>
                 <Marker
                     coordinates={finalDestination}
                     anchor="bottom">
-                    <img src={'https://raw.githubusercontent.com/ksowah/UBER-CLONE/20ee0fafcc3e605ae4060daeeb498ca964b636c6/assets/mapbox-marker-icon-blue.svg?token=ATDCQGPSLWCKNFCBOKLDYKDCAISWM'}
+                    <img src={'https://www.pngplay.com/wp-content/uploads/9/Map-Marker-Transparent-PNG.png'}
                     className='h-10 animate-bounce'
                     />
                 </Marker>
