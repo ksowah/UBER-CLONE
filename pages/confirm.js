@@ -13,8 +13,15 @@ const Map = ReactMapboxGl({
 
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
 
-  const [long, setLong] = useState(null);
-  const [lat, setLat] = useState(null);
+
+const confirm = () => {
+
+  const router = useRouter()
+  const {pickup, dropoff} = router.query
+
+  
+  const [long, setLong] = useState(-2);
+  const [lat, setLat] = useState(5);
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -39,11 +46,6 @@ const Map = ReactMapboxGl({
 
 
 
-const confirm = () => {
-
-  const router = useRouter()
-  const {pickup, dropoff} = router.query
-
   // ------------- client request -------------
 
     const [initialDestination, setInitialDestination] = useState([-2, 5])
@@ -54,14 +56,14 @@ const confirm = () => {
          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?proximity=${long},${lat}&types=place%2Cpostcode%2Caddress&access_token=${token}`)
          .then ((res) => res.json()) 
          .then ((data) => {
-
+          console.log(data);
             setInitialDestination(data.features[0].center)
          })
         
     }
 
     const getDropoff = async (dropoff)=> {
-        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?proximity=${long},${lat}types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?proximity=${long},${lat}&types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
         // finalDestination = res.features[0].center
         // console.log(finalDestination);
