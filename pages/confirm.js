@@ -56,7 +56,7 @@ const confirm = () => {
          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?proximity=${long},${lat}&types=place%2Cpostcode%2Caddress&access_token=${token}`)
          .then ((res) => res.json()) 
          .then ((data) => {
-          data.features && setInitialDestination(data.features[0 || 1].center)
+          data.features && setInitialDestination(data.features[0].center || [-3.663890138, 5.496609119])
          })
         
     }
@@ -66,7 +66,7 @@ const confirm = () => {
         .then( res =>  res.json() )
         .then((data)=>{
           console.log(data);
-          data.features && setInitialDestination(data.features[0 || 1].center)
+          data.features && setInitialDestination(data.features[0].center || [-4.663890138, 5.496609119])
         })
     }
        
