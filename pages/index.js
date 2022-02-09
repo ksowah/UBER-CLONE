@@ -18,8 +18,8 @@ export default function Home() {
   const auth = getAuth(app)
   const router = useRouter()
   const [user, setUser] = useState(null);
-  const [long, setLong] = useState([4]);
-  const [lat, setLat] = useState([-5]);
+  const [long, setLong] = useState(null);
+  const [lat, setLat] = useState(null);
 
   useEffect(()=>{
     return onAuthStateChanged(auth, user => {
@@ -49,7 +49,7 @@ export default function Home() {
 
   useEffect(()=>{
     getLocation()
-  }, [])
+  }, [long, lat])
 
 
   function showPosition(position) {
