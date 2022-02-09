@@ -7,10 +7,9 @@ import { useState } from 'react';
 
 const search = () => {
 
+    const accessToken = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
     const [pickup, setPickup] = useState('')
     const [dropoff, setDropoff] = useState('')
-
-    console.log(dropoff);
 
   return (
   <div className='bg-gray-200 h-screen'>

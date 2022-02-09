@@ -13,6 +13,32 @@ const Map = ReactMapboxGl({
 
   const token = 'pk.eyJ1Ijoia3Nvd2FoIiwiYSI6ImNrejVyNHdhOTByazUycHJ4MWY5Z2tjOHYifQ.iMF7eI2jMGbqDMynRTLNGw'
 
+  const [long, setLong] = useState(null);
+  const [lat, setLat] = useState(null);
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(showPosition);
+    } else {
+     alert('OOOOPS!! looks like we can\'t get your location ')
+    }
+
+  }
+
+  useEffect(()=>{
+    getLocation()
+  }, [long, lat])
+
+
+  function showPosition(position) {
+    if(position.coords.latitude && position.coords.longitude){
+      setLat(position.coords.latitude)
+      setLong(position.coords.longitude)
+    }
+  }
+
+
+
 const confirm = () => {
 
   const router = useRouter()
@@ -25,7 +51,7 @@ const confirm = () => {
 
 
     const getPickUp = (pickup) => {
-         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?proximity=${long},${lat}&types=place%2Cpostcode%2Caddress&access_token=${token}`)
          .then ((res) => res.json()) 
          .then ((data) => {
 
@@ -35,7 +61,7 @@ const confirm = () => {
     }
 
     const getDropoff = async (dropoff)=> {
-        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?types=place%2Cpostcode%2Caddress&access_token=${token}`)
+        const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?proximity=${long},${lat}types=place%2Cpostcode%2Caddress&access_token=${token}`)
         const res = await request.json() 
         // finalDestination = res.features[0].center
         // console.log(finalDestination);
